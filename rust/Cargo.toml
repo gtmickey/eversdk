@@ -1,0 +1,21 @@
+[package]
+name = "rust_lib_eversdk"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "staticlib"]
+
+[dependencies]
+flutter_rust_bridge = "=2.0.0-dev.36"
+openssl = { version = "0.10.64", features = ["vendored"] }
+ton_client = { git = "https://github.com/everx-labs/ever-sdk.git" }
+
+## 编译选项， 减少最终打包体积
+[profile.release]
+opt-level = 3
+lto = true
+
+[profile.dev]
+opt-level = 3
+lto = true
